@@ -1,0 +1,285 @@
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Scuba Calculators</title>
+
+	<style type="text/css">
+		body {
+			background-color:#909090;
+		}
+
+		table {
+			border-spacing: 1; 
+			padding: 0; 
+			background-color: black;
+		}
+		
+		.inner {
+			border-spacing: 
+			0; font-size:12px;
+		}
+		
+		th {
+			background-color: #DBE5F1;
+			font-size: 20px;
+		}
+		
+		td {
+			background-color: white;
+			text-align: center;
+			vertical-align: top;
+			text-size: 25px;
+		}
+		
+		.bold {
+			font-weight: bold;
+		}
+		
+		input {
+			font-size: 25px;
+		}
+		
+		select {
+			font-size: 10px;
+		}
+		
+		button {
+			font-size: 11px;
+		}
+	</style>
+</head>
+
+<body>
+
+<!-- Begin Find Depth & Pressure calculator  -->
+	<form name="frmEAD">
+	<table>
+	  <tbody><tr><th colspan="2"><span style="font-size:20px;">
+        <b><i>Equivalent Air Depth:</i></b></span><br></th>
+
+	  </tr><tr>
+		  <td>
+
+			<!-- Depth controls -->
+			<table align="center" class="inner">
+			  <tbody><tr>
+				<td width="100"><b>Dive depth:</b><br>
+				<input style="font-size:25px;" type="text" name="txtEADDepth" id="eaddepth" value="0" onfocus="setfocus(&#39;eaddepth&#39;)" onchange="DepthToEAD()" size="3" maxlength="5"><br>
+
+				</td><td width="110" valign="top"><b>O<sub>2</sub> %:</b><br>
+					<input style="font-size:25px;" type="text" value="21" name="txtEADO2Mix" id="eado2mix" onfocus="setfocus(&#39;eado2mix&#39;)" onchange="EADO2Mix()" size="3" maxlength="5"><br>
+				</td>
+
+				<td width="100" valign="top"><b>EAD:</b><br>
+				<input style="font-size:25px;" type="text" name="txtEAD" id="ead" value="0" onfocus="setfocus(&#39;ead&#39;)" onchange="EADToDepth()" size="3" maxlength="5">
+				</td>
+			  </tr>
+			</tbody></table>
+			<!-- End depth controls -->
+		  </td>
+
+		  <td width="82">
+			<table class="inner">
+			  <tbody><tr>
+				<td><b>Units:</b><br>
+				
+					<select name="cboEADdepthUnits" style="width:82px" onchange="EADconvertDepthUnits()">
+						<option value="3.2808399" id="1">Feet</option>
+						<option value="0.3048" id="2">Meters</option>
+					</select><br>
+				
+					<select name="cboEADWaterType" style="width:82px;" onchange="EADWaterType()">
+						<option value="33" id="1">Saltwater</option>
+						<option value="34" id="2">Freshwater</option>
+					</select>
+				</td>
+			  </tr>
+			</tbody></table>
+		  </td>
+	  </tr>
+	  
+	  <tr>
+		<td colspan="2" style="text-align:left;">
+			<table class="inner" border="0">
+			  <tbody><tr>
+				<td width="100"></td>
+				
+				<td style="text-align:left;" width="195">
+					<b>PO<sub>2</sub> warning:</b>
+					<input style="font-size:9px;" type="text" value="0.21" name="txtEADPO2" id="eadpo2" size="3" maxlength="5"></td>
+				
+				<td>- <a href="" title="Reset calculator" h="" onclick="EADReset()">Reset</a> -
+			  </td></tr>
+			</tbody></table>
+		</td>
+	  </tr>
+	</tbody></table>
+	</form>
+<!-- End Find Depth & Pressure calculator -->
+
+<br><br>
+
+<!-- Begin Find Depth & Pressure calculator  -->
+	<form name="frmDepthPressure">
+	<table>
+	  <tbody><tr><th colspan="2"><span style="font-size:20px;">
+        <b><i>Find Depth &amp; Pressure:</i></b></span><br></th>
+
+	  </tr><tr>
+		  <td width="180">
+
+			<!-- Depth controls -->
+			<table align="center" class="inner">
+			  <tbody><tr>
+				<td><input style="font-size:25px;" type="text" id="depth" name="txtDepth" value="0" onfocus="setfocus(&#39;depth&#39;)" onchange="depthToPressure()" size="3" maxlength="5"></td>
+			  
+				<td style="text-align:left;"><span style="font-size:12px;">
+					<select name="depthUnits" style="width:80px" onchange="convertDepthUnits()">
+						<option value="3.2808399" id="1">Feet</option>
+						<option value="0.3048" id="2">Meters</option>
+
+					</select><br>
+					
+					<select name="waterType" style="width:80px" onchange="depthToPressure()">
+						<option value="33"> Saltwater
+						</option><option value="34"> Freshwater
+					</option></select></span></td>
+			  </tr>
+			</tbody></table>
+			<!-- End depth controls -->
+		  </td>
+
+		  <td width="192">
+		    <!-- Pressure controls -->
+			<table align="center" class="inner">
+			  <tbody><tr>
+				<td><input style="font-size:25px;" type="text" id="pressure" name="txtPressure" value="0" onfocus="setfocus(&#39;pressure&#39;)" onchange="pressureToDepth()" size="3" maxlength="5"></td>
+
+				<td style="text-align:left; font-size:11px;">
+					<select name="pressureUnits" style="width:100px" onchange="depthToPressure()">
+						<option value="1" selected="yes"> Atmospheres
+						</option><option value="14.7"> psi
+						</option><option value="1.013"> bar
+						</option><option value="1013.0"> mb
+						</option><option value="760.0"> mmHg
+					</option></select><br>
+
+					<select name="pressureType" style="width:100px" onchange="depthToPressure()">
+						<option value="0"> Gauge pressure
+						</option><option value="1"> ATA (+1 atm)
+					</option></select><br>
+			  </td></tr>
+			</tbody></table>
+			<!-- End pressure controls -->
+		  </td>
+	  </tr>
+	</tbody></table>
+	</form>
+<!-- End Find Depth & Pressure calculator -->
+
+<br><br>
+
+<!-- Begin Find Cylinder Volume calculator -->
+	<form name="frmCV">
+
+	<table>
+	  <tbody><tr><th colspan="5"><b><i>Cylinder Volume</i></b></th>
+
+	  </tr><tr>
+		<td>
+		<table class="inner">
+		  <tbody><tr>
+			<td class="bold" width="115">Settings:<br>
+				<select name="cboCVNumberOfCylinders" style="width: 105px;" onchange="CVCalcActualVolume()">
+					<option value="1" id="1">Single cylinder</option>
+					<option value="2" id="2">Double cylinders</option>
+				</select><br>
+
+				<select name="cboCVRatedVolumeUnits" style="width: 105px;">
+					<option value="0.0353146667" id="1">Cubic feet</option>
+					<!-- <option value="28.3168466" id="2">Liters</option> -->
+				</select><br>
+
+				<select name="cboCVRatedPressureUnits" style="width: 105px;">
+					<option value="14.5037738" id="1">psi</option>
+					<!-- <option value="0.0689475729" id="2">bar</option> -->
+				</select>
+			</td>
+		  </tr>
+		</tbody></table>
+		</td>
+
+		<td style="vertical-align:middle;">
+		<table class="inner">
+		  <tbody><tr>
+			<td class="bold" width="100">Rated Volume:<br>
+				<input type="text" name="txtCVRatedVolume" id="cvratedvolume" tabindex="1" value="0" onfocus="setfocus(&#39;cvratedvolume&#39;)" size="3" maxlength="5" onchange="CVCalcActualVolume()"><br>
+				<input type="text" name="txtCVRatedVolumeUnit" id="cvratedvolumeunit" value="Cubic Feet" onfocus="setfocus(&#39;cvratedvolume&#39;)" size="16" maxlength="3" style="font-size:9px; text-align:center;">
+			</td>
+
+			<td class="bold" width="100">Rated Pressure:<br>
+				<input type="text" name="txtCVRatedPressure" id="cvratedpressure" tabindex="2" value="0" onfocus="setfocus(&#39;cvratedpressure&#39;)" size="3" maxlength="5" onchange="CVCalcActualVolume()"><br>
+				<input type="text" name="txtCVRatedPressureUnit" id="cvratedpressureunit" value="psi" onfocus="setfocus(&#39;cvratedpressure&#39;)" size="16" maxlength="3" style="font-size:9px; text-align:center;">
+			</td>
+
+		  </tr>
+		</tbody></table>
+		</td>
+
+		<td style="vertical-align:middle;">
+		<table class="inner">
+		  <tbody><tr>
+			<td class="bold" width="100">Fill Pressure:<br>
+				<input type="text" name="txtCVFillPressure" id="cvfillpressure" tabindex="3" value="0" onfocus="setfocus(&#39;cvfillpressure&#39;)" size="3" maxlength="5" onchange="CVCalcActualVolume()"><br>
+				<input type="text" name="txtCVFillPressureUnit" id="cvfillpressureunit" value="psi" onfocus="setfocus(&#39;cvfillpressure&#39;)" size="16" maxlength="3" style="font-size:9px; text-align:center;">
+			</td>
+		  </tr>
+		</tbody></table>
+		</td>
+
+
+		<td style="vertical-align:middle;">
+		<table class="inner">
+		  <tbody><tr>
+			<td class="bold" width="100">Actual Volume:<br>
+				<input type="text" name="txtCVActualVolume" id="cvactualvolume" tabindex="4" value="0.0" onfocus="setfocus(&#39;cvactualvolume&#39;)" size="3" maxlength="5" onchange="CVCalcFillPressure()"><br>
+				<input type="text" name="txtCVActualVolumeUnit" id="cvactualvolumeunit" value="Cubic feet" onfocus="setfocus(&#39;cvactualvolume&#39;)" size="16" maxlength="3" style="font-size:9px; text-align:center;">
+			</td>
+		  </tr>
+		</tbody></table>
+		</td>
+
+		<td width="110" style="vertical-align:middle;">
+		<table class="inner" align="center">
+		  <tbody><tr>
+			<td class="bold">Turn Pressure:</td>
+		  </tr>
+		
+		  <tr>
+			<td class="bold" style="text-align:right;" onchange="CVCalcTurnUnit()">
+				<select name="cboCVTurnUnits">
+					<option value="3" id="1">1/3rds</option>
+					<option value="6" id="2">1/6ths</option>
+				</select> 
+				<input style="font-size:10px;" type="text" name="txtCVTurnValue" id="cvturnvalue" value="0" size="4" maxlength="4" onfocus="setfocus(&#39;cvactualvolume&#39;)"> <br>
+				
+				Turn @: <input style="font-size:10px;" type="text" name="txtCVTurnPressure" id="cvturnpressure" value="0" size="4" maxlength="4" onfocus="setfocus(&#39;cvactualvolume&#39;)"> <br>
+			</td>
+		  </tr>
+		</tbody></table>
+
+	  </td></tr>
+	</tbody></table>
+	</form>
+
+<br><br>
+
+<!-- End Find Cylinder Volume calculator -->
+
+<!-- Load JavaScripts -->
+<script type="text/javascript" src="./js/scubacalculators.js"></script>
+
+
+
+</body></html>
