@@ -1,4 +1,4 @@
-The MIT License (MIT)
+The (Adjusted) MIT License (MIT)
 
 Copyright (c) 2014 Justin-Berke
 
@@ -9,14 +9,41 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
+1) Scuba diving is a dangerous activity with inherent risks of death and serious 
+injury. No person should attempt scuba diving without professional training, 
+certification, supervision and regular medical assessment. It is also dangerous 
+for trained scuba divers to exceed the limitations of their training. Diving 
+at altitudes above sea level, and breathing mixed gases other than air, carry 
+increased risk and additional types of risk. Divers should seek additional, 
+professional training and certification for such activities.
+
+These tools are intended for reference use only. The tools and code are not 
+designed for use in scuba diving and related activities, and are emphatically 
+not suitable for use in actual dive planning. Always refer to officially 
+recognized, verified diving tables from your certifying agency before 
+participating in a properly planned scuba diving session.
+
+The software will yield numerical results intended to aid dive planning 
+activities. The results have not been verified by a certified diving physician 
+for accuracy. It is possible that the results from these tool can lead to 
+serious injury or death if used inappropriately.
+
+The tools should not be used to generate diving tables or protocols related to 
+diving. No output from this software should be misconstrued as a diving table. 
+Only persons qualified to supervise diving activities or qualified in hyperbaric 
+medicine should attempt to design diving tables.
+
+The author does not warrant that the output is correct in any sense whatsoever. 
+Even if correctly computed, the output from these tools shall in no way be used 
+in final dive plans.
+
+2) The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+3) THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
